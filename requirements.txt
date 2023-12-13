@@ -119,12 +119,9 @@ stack-data==0.6.2
 sympy==1.12
 termcolor==1.1.0
 tiktoken==0.5.1
-tokenizers==0.13.3
-torch==2.0.1
 tornado==6.3.2
 tqdm==4.66.1
 traitlets==5.9.0
-transformers==4.33.1
 trio==0.22.2
 trio-websocket==0.10.4
 triton==2.0.0
