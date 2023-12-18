@@ -224,14 +224,17 @@ def logout_user(request):
 
 #TODO: Şimdilik @login_required ve request.session kullanarak git. (veya request.session lengthe göre anla) request.user'da bug var, bi ara düzelt. (request.session datası güzel taşınıyo olmasına rağmen request.user AnonymousUser olarak dönüyo)
 
+from django.contrib.sessions.models import Session
 @api_view(['POST', 'GET'])
 def check_auth(request):
     permission_classes = [AllowAny]
 
     print(request.session.session_key)
+
     s = SessionStore(session_key = request.session.session_key)
     try:
-        username = s["username"]
+        username_req = request.data["username"]
+        s_data = Session.objects.get(username=username_req).get_decoded()
         auth = True
     except:
         auth = False
@@ -240,9 +243,9 @@ def check_auth(request):
     # print(s.get_decoded())
     
     if(auth):
-        return Response({"Message": "User Authenticated","user-id":request.session["_auth_user_id"],"session-data":request.session,"key":request.session.session_key})
+        return Response({"Message": "User Authenticated","user-id":s_data["_auth_user_id"],"session-data":s_data,"key":s_data["session_key"],"requestdatatest":request.data})
     else:
-        return Response({"Message": "Authentication failed","session-data":request.session,"key":request.session.session_key})
+        return Response({"Message": "Authentication failed","session-data":s_data,"key":s_data["session_key"],"requestdatatest":request.data})
         
 @api_view(['POST','GET'])
 def invoke(request):
