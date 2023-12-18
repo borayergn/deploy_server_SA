@@ -237,6 +237,7 @@ def check_auth(request):
         s_data = Session.objects.get(username=username_req).get_decoded()
         auth = True
     except:
+        s_data = {}
         auth = False
 
     # s = Session.objects.get(pk=request.session.session_key)
