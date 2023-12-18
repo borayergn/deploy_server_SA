@@ -18,6 +18,9 @@ from rest_framework.decorators import action
 import hashlib
 import base64
 from rest_framework.exceptions import APIException
+from importlib import import_module
+from django.conf import settings
+from django.contrib.sessions.backends.db import SessionStore
 
 API_URL = "https://api-inference.huggingface.co/models/Boray/LLama2SA_1500_V2_Tag"
 DUMMY_API_URL = "https://api-inference.huggingface.co/models/microsoft/DialoGPT-large"
@@ -188,6 +191,7 @@ def inference(request):
 
 @api_view(['POST'])
 def authentiacte_user(request):
+    
     permission_classes = [AllowAny]
     username_form = request.data["username"]
     password_form = request.data["password"]
@@ -197,7 +201,12 @@ def authentiacte_user(request):
     if(user is None):
         return(Response({"Status":"Invalid Username or Password","username":username_form,"password":password_form}))
 
+    s = SessionStore(request.session)
+
+    print(s)
+
     request.session["username"] = user.get_username()
+
 
     user_data = User.objects.get(username = request.session["username"])
     user_serialized = UserSerializer(user_data , many=False)
@@ -218,6 +227,8 @@ def logout_user(request):
 @api_view(['POST', 'GET'])
 def check_auth(request):
     permission_classes = [AllowAny]
+
+    print(request.session.session_key)
     if(len(request.session.keys()) != 0):
         return Response({"Message": "User Authenticated","user-id":request.session["_auth_user_id"],"session-data":request.session})
     else:
