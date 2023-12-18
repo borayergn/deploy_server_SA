@@ -32,8 +32,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 SESSION_ENGINE = "django.contrib.sessions.backends.db" 
+SESSION_COOKIE_SECURE = True
 SESSION_SAVE_EVERY_REQUEST = True
-SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_SAMESITE = None
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = 'smtp.gmail.com'
@@ -116,11 +117,11 @@ SIMPLE_JWT = {
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
-# CORS_ORIGIN_WHITELIST = [
-#     "http://localhost:3000",
-#     "http://localhost:8000",
-# ]
+
 CORS_ALLOW_CREDENTIALS = True
+
+CSRF_USE_SESSIONS = True
+
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
@@ -208,7 +209,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/staticfiles/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
