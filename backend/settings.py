@@ -126,7 +126,8 @@ CSRF_USE_SESSIONS = True
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
-    'http://10.106.0.84:3000'
+    'http://10.106.0.84:3000',
+    'http://django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com/'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
