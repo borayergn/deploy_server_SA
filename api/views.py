@@ -244,9 +244,9 @@ def check_auth(request):
     # print(s.get_decoded())
     
     if(auth):
-        return Response({"Message": "User Authenticated","user-id":s_data["_auth_user_id"],"session-data":s_data,"key":s_data["session_key"],"requestdatatest":request.data})
+        return Response({"Message": "User Authenticated","user-id":s_data["_auth_user_id"],"session-data":s_data,"requestdatatest":request.data})
     else:
-        return Response({"Message": "Authentication failed","session-data":s_data,"key":s_data["session_key"],"requestdatatest":request.data})
+        return Response({"Message": "Authentication failed","session-data":s_data,"requestdatatest":request.data})
         
 @api_view(['POST','GET'])
 def invoke(request):
