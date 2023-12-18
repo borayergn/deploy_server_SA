@@ -217,6 +217,7 @@ def logout_user(request):
 
 @api_view(['POST', 'GET'])
 def check_auth(request):
+    permission_classes = [AllowAny]
     if(len(request.session.keys()) != 0):
         return Response({"Message": "User Authenticated","user-id":request.session["_auth_user_id"],"session-data":request.session})
     else:
