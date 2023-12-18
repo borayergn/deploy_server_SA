@@ -34,7 +34,6 @@ ALLOWED_HOSTS = ["django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com
 SESSION_ENGINE = "django.contrib.sessions.backends.db" 
 SESSION_COOKIE_SECURE = True
 SESSION_SAVE_EVERY_REQUEST = False
-SESSION_COOKIE_SAMESITE = None
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = 'smtp.gmail.com'
