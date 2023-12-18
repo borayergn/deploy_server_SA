@@ -229,10 +229,20 @@ def check_auth(request):
     permission_classes = [AllowAny]
 
     print(request.session.session_key)
-    if(len(request.session.keys()) != 0):
-        return Response({"Message": "User Authenticated","user-id":request.session["_auth_user_id"],"session-data":request.session,"session_key":request.session.session_key})
+    s = SessionStore(session_key = request.session.session_key)
+    try:
+        username = s["username"]
+        auth = True
+    except:
+        auth = False
+
+    # s = Session.objects.get(pk=request.session.session_key)
+    # print(s.get_decoded())
+    
+    if(auth):
+        return Response({"Message": "User Authenticated","user-id":request.session["_auth_user_id"],"session-data":request.session,"key":request.session.session_key})
     else:
-        return Response({"Message": "Authentication failed","session-data":request.session,"session_key":request.session.session_key})
+        return Response({"Message": "Authentication failed","session-data":request.session,"key":request.session.session_key})
         
 @api_view(['POST','GET'])
 def invoke(request):
