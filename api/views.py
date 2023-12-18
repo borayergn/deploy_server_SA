@@ -188,6 +188,7 @@ def inference(request):
 
 @api_view(['POST'])
 def authentiacte_user(request):
+    permission_classes = [AllowAny]
     username_form = request.data["username"]
     password_form = request.data["password"]
 
@@ -216,10 +217,10 @@ def logout_user(request):
 
 @api_view(['POST', 'GET'])
 def check_auth(request):
-        if(len(request.session.keys()) != 0):
-            return Response({"Message": "User Authenticated","user-id":request.session["_auth_user_id"],"session-data":request.session})
-        else:
-            return Response({"Message": "Authentication failed","session-data":request.session})
+    if(len(request.session.keys()) != 0):
+        return Response({"Message": "User Authenticated","user-id":request.session["_auth_user_id"],"session-data":request.session})
+    else:
+        return Response({"Message": "Authentication failed","session-data":request.session})
         
 @api_view(['POST','GET'])
 def invoke(request):
