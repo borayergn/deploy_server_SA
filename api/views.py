@@ -201,9 +201,9 @@ def authentiacte_user(request):
     if(user is None):
         return(Response({"Status":"Invalid Username or Password","username":username_form,"password":password_form}))
 
-    s = SessionStore(request.session)
+    # s = SessionStore(request.session)
 
-    print(s)
+    # print(s)
 
     request.session["username"] = user.get_username()
 
