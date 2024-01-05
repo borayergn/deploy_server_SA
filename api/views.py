@@ -30,6 +30,8 @@ DUMMY_API_URL = "https://api-inference.huggingface.co/models/microsoft/DialoGPT-
 API_TOKEN = "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"
 headers = {"Authorization": f"Bearer {API_TOKEN}"}
 
+HOST = "django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com"
+
 
 def inferenceAPIQuery(payload):
     data = json.dumps(payload)
@@ -89,7 +91,7 @@ class ApiKeyViewSet(viewsets.ModelViewSet):
     
     def create(self, request):
         
-        response = requests.get("http://127.0.0.1:8000/api/get_api_key") # requests yerine redirect eşdeğeri (kendi içindeki endpoint için)
+        response = requests.get(f"{HOST}/api/get_api_key") # requests yerine redirect eşdeğeri (kendi içindeki endpoint için)
         content = response.json()
 
         print(content["Key"])
@@ -168,10 +170,10 @@ def home(request):
     paths = {
         "API_PATHS":
             {
-            "users": "http://127.0.0.1:8000/api/users/",
-            "chats": "http://127.0.0.1:8000/api/chats/",
-            "messages": "http://127.0.0.1:8000/api/messages/",
-            "inference": "http://127.0.0.1:8000/api/inference/"
+            "users": f"{HOST}/api/users/",
+            "chats": f"{HOST}/api/chats/",
+            "messages": f"{HOST}/api/messages/",
+            "inference": f"{HOST}/api/inference/"
             }
         }
     return(Response(paths))
@@ -284,8 +286,8 @@ def invoke(request):
       "sender": "bot"
     }
 
-    requests.post("http://127.0.0.1:8000/api/messages/",json=user_message)
-    requests.post("http://127.0.0.1:8000/api/messages/",json=bot_message)
+    requests.post(f"{HOST}/api/messages/",json=user_message)
+    requests.post(f"{HOST}/api/messages/",json=bot_message)
     return Response(prompt_answer_pair)
 
 # Chat history
@@ -313,7 +315,7 @@ def countToken(request):
                "user_id":request.session["_auth_user_id"]
            }
     
-    requests.post("http://127.0.0.1:8000/api/user_usage/",json=data)  # requests yerine farklı bir method kullanabilirsin kendi içindeki istekler için
+    requests.post(f"{HOST}/api/user_usage/",json=data)  # requests yerine farklı bir method kullanabilirsin kendi içindeki istekler için
     return Response({"input_token_count":num_input_tokens,"output_token_count":num_output_tokens,"input_tokens":token_input_bytes,"output_tokens":token_output_bytes})
 
 # An endpoint to generate unique API keys
