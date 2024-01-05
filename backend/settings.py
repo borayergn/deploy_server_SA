@@ -29,11 +29,11 @@ SECRET_KEY = 'django-insecure--d!fqz$+o*dny8lh4g&ooy5&0g^bj8awblgqq716hcau41c_yh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com"]
+ALLOWED_HOSTS = ["51.21.78.38","django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com","http://localhost","http://127.0.0.1","http://django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com/",'https://react-client-dxho.onrender.co']
 
 SESSION_ENGINE = "django.contrib.sessions.backends.db" 
-SESSION_COOKIE_SECURE = True
-SESSION_SAVE_EVERY_REQUEST = False
+# SESSION_SAVE_EVERY_REQUEST = True
+# SESSION_COOKIE_SECURE = True
 # SESSION_COOKIE_SAMESITE = None
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
@@ -45,6 +45,7 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'NapcanIdMe@gmail.com'
 SERVER_EMAIL = 'NapcanIdMe@gmail.com'
 
+SECURE_CROSS_ORIGIN_OPENER_POLICY=None
 
 # Application definition
 
@@ -56,86 +57,62 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework_simplejwt.token_blacklist',
     'api',
     'corsheaders',
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
 ]
+SESSION_COOKIE_SAMESITE_FORCE_ALL = True
 
-AUTHENTICATION_BACKENDS = [
- 'django.contrib.auth.backends.ModelBackend',
-]
+SESSION_COOKIE_SAMESITE = 'None'  
+SESSION_COOKIE_SECURE = False
+
+CSRF_COOKIE_SAMESITE = 'None' 
+CSRF_COOKIE_SECURE = False
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES':[
-        'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
     ],
 
-}
-
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=50),
-    'ROTATE_REFRESH_TOKENS': True,
-    'BLACKLIST_AFTER_ROTATION': True,
-    'UPDATE_LAST_LOGIN': False,
-
-    'ALGORITHM': 'HS256',
-
-    'VERIFYING_KEY': None,
-    'AUDIENCE': None,
-    'ISSUER': None,
-    'JWK_URL': None,
-    'LEEWAY': 0,
-
-    'AUTH_HEADER_TYPES': ('Bearer',),
-    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
-    'USER_ID_FIELD': 'id',
-    'USER_ID_CLAIM': 'user_id',
-    'USER_AUTHENTICATION_RULE': 'rest_framework_simplejwt.authentication.default_user_authentication_rule',
-
-    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
-    'TOKEN_TYPE_CLAIM': 'token_type',
-    'TOKEN_USER_CLASS': 'rest_framework_simplejwt.models.TokenUser',
-
-    'JTI_CLAIM': 'jti',
-
-    'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
-    'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
-    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_CREDENTIALS = True
 
-CSRF_USE_SESSIONS = True
 
-SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
     'http://10.106.0.84:3000',
     'http://django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com/'
+    'https://react-client-dxho.onrender.co',
+    'http://django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
+    'http://localhost:3000/',
     'http://127.0.0.1:8000',
     'http://django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com/'
+    'https://react-client-dxho.onrender.co'
+    'http://django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com'
     
 ]
 
@@ -168,7 +145,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": "django.db.backends.postgresql", # engine vermeden çalışıyo mu dene
         "NAME": "postgre_db",
         "USER": "boray",
         "PASSWORD": "boray314314",
@@ -200,7 +177,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-us'  # TR'ye çek
 
 TIME_ZONE = 'UTC'
 
