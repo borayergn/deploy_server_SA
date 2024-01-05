@@ -98,7 +98,8 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
-    'http://10.106.0.84:3000'
+    'http://10.106.0.84:3000',
+    'http://django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com/'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -183,7 +184,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/staticfiles/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
