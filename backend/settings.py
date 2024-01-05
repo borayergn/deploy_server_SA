@@ -45,6 +45,7 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'NapcanIdMe@gmail.com'
 SERVER_EMAIL = 'NapcanIdMe@gmail.com'
 
+SECURE_CROSS_ORIGIN_OPENER_POLICY=None
 
 # Application definition
 
