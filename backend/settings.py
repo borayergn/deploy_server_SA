@@ -77,10 +77,10 @@ MIDDLEWARE = [
 SESSION_COOKIE_SAMESITE_FORCE_ALL = True
 
 SESSION_COOKIE_SAMESITE = 'None'  
-SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = True
 
 CSRF_COOKIE_SAMESITE = 'None' 
-CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = True
 
 
 REST_FRAMEWORK = {
@@ -119,7 +119,6 @@ CSRF_TRUSTED_ORIGINS = [
     'http://django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com',
     "https://mail.babico.name.tr",
     "http://mail.babico.name.tr"
-    
 ]
 
 
