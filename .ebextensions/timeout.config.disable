@@ -11,7 +11,6 @@ files:
       proxy_read_timeout      600;
       proxy_send_timeout      600;
       keepalive_timeout       600;
-
 container_commands:
   nginx_reload:
      command: "sudo systemctl restart nginx"
