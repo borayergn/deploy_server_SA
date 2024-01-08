@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure--d!fqz$+o*dny8lh4g&ooy5&0g^bj8awblgqq716hcau41c_yh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["51.21.78.38","django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com","http://localhost","http://127.0.0.1","http://django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com/",'https://react-client-dxho.onrender.co']
+ALLOWED_HOSTS = ["51.21.78.38","django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com","http://localhost","http://127.0.0.1","http://django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com/",'https://react-client-dxho.onrender.co',"mail.babico.name.tr"]
 
 SESSION_ENGINE = "django.contrib.sessions.backends.db" 
 # SESSION_SAVE_EVERY_REQUEST = True
@@ -112,7 +112,7 @@ CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1:3000',
     'http://localhost:3000/',
     'http://127.0.0.1:8000',
-    'http://django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com/'
+    'https://django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com/'
     'https://react-client-dxho.onrender.co'
     'http://django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com'
     
