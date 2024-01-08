@@ -30,7 +30,7 @@ DUMMY_API_URL = "https://api-inference.huggingface.co/models/microsoft/DialoGPT-
 API_TOKEN = "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"
 headers = {"Authorization": f"Bearer {API_TOKEN}"}
 
-HOST = "django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com"
+HOST = "https://sa-inference.sytes.net"
 
 
 def inferenceAPIQuery(payload):
@@ -244,7 +244,7 @@ def invoke(request):
         "kwargs": {"temperature" : 0.4,"do_sample":True,"repetition_penalty":1.1}
         }
     print("test data:",test_data)
-    response = requests.post('http://sa-inference.sytes.net:8080/invoke',json=test_data,timeout=1000)
+    response = requests.post(f'http://sa-inference.sytes.net:8080/invoke',json=test_data,timeout=1000)
     content = response.json()
     print("content:",content)
     try:
