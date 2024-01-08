@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure--d!fqz$+o*dny8lh4g&ooy5&0g^bj8awblgqq716hcau41c_yh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["51.21.78.38","django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com","http://localhost","http://127.0.0.1","http://django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com/",'https://react-client-dxho.onrender.co',"mail.babico.name.tr"]
+ALLOWED_HOSTS = ["51.21.78.38","django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com","http://localhost","http://127.0.0.1","http://django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com/",'https://react-client-dxho.onrender.co',"sa-inference.sytes.net"]
 
 SESSION_ENGINE = "django.contrib.sessions.backends.db" 
 # SESSION_SAVE_EVERY_REQUEST = True
@@ -105,8 +105,8 @@ CORS_ALLOWED_ORIGINS = [
     'http://django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com/',
     'https://react-client-dxho.onrender.co',
     'http://django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com',
-    "https://mail.babico.name.tr",
-    "http://mail.babico.name.tr"
+    "https://sa-inference.sytes.net",
+    "http://sa-inference.sytes.net"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -117,8 +117,8 @@ CSRF_TRUSTED_ORIGINS = [
     'https://django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com/',
     'https://react-client-dxho.onrender.co',
     'http://django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com',
-    "https://mail.babico.name.tr",
-    "http://mail.babico.name.tr"
+    "https://sa-inference.sytes.net",
+    "http://sa-inference.sytes.net"
 ]
 
 

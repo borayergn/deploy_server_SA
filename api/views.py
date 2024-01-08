@@ -325,7 +325,7 @@ def authenticate_key(request):
 # An endpoint to inference with the model API and API key
 @api_view(['POST','GET'])
 def invoke_key(request):
-    response = requests.post('http://172.17.45.102:8001/invoke',json=request.data)
+    response = requests.post('http://sa-inference.sytes.net:8080/invoke',json=request.data)
     content = response.json()
     print(content)
     return Response(content["output"]["result"])
