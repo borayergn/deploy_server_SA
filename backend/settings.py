@@ -15,6 +15,8 @@ from pathlib import Path
 from datetime import timedelta
 import os
 
+from corsheaders.defaults import default_methods
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -93,7 +95,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_CREDENTIALS = True
 
-
+CORS_ALLOW_METHODS = (*default_methods,)
 
 
 CORS_ALLOWED_ORIGINS = [
