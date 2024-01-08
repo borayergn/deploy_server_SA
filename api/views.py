@@ -244,7 +244,7 @@ def invoke(request):
         "kwargs": {"temperature" : 0.4,"do_sample":True,"repetition_penalty":1.1}
         }
     print("test data:",test_data)
-    response = requests.post('http://sa-inference.sytes.net:8080/invoke',json=test_data)
+    response = requests.post('http://sa-inference.sytes.net:8080/invoke',json=test_data,timeout=1000)
     content = response.json()
     print("content:",content)
     try:
