@@ -215,28 +215,6 @@ def authentiacte_user(request):
         return(Response({"Status":"Login Succesfull.","username":username_form,"password":password_form,"Authenticated":request.user.is_authenticated}))
 
     
-    # s = SessionStore()
-
-    
-
-    # request.session.create()
-
-    # request.session["username"] = user.get_username()
-    
-    # user_data = User.objects.get(username = request.session["username"])
-    # user_serialized = UserSerializer(user_data , many=False)
-
-    
-
-    # for key in user_serialized.data:
-    #     s[key] = user_serialized.data[key]
-    
-    # # s.create()
-
-    # if(user is not None):
-   
-   
-    
 @api_view(['POST','GET'])
 def logout_user(request):
     logout(request)
@@ -263,7 +241,7 @@ def invoke(request):
     test_data = {
         "input": send_query,
         "config": {"temperature" : 0.4,"do_sample":True,"repetition_penalty":1.1},
-        "kwargs": {"temperature" : 0.9,"do_sample":True,"repetition_penalty":1.}
+        "kwargs": {"temperature" : 0.4,"do_sample":True,"repetition_penalty":1.1}
         }
     print("test data:",test_data)
     response = requests.post('http://sa-inference.sytes.net:8080/invoke',json=test_data)
