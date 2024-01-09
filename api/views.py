@@ -239,10 +239,12 @@ def invoke(request):
         send_query = request.data["prompt"]
     
     test_data = {
-        "input": send_query,
-        "config": {"temperature" : 0.4,"do_sample":True,"repetition_penalty":1.1},
-        "kwargs": {"temperature" : 0.4,"do_sample":True,"repetition_penalty":1.1}
-        }
+    "input": {
+        "query": send_query
+    },
+    "config": {},
+    "kwargs": {}
+    }
     print("test data:",test_data)
     response = requests.post(f'http://sa-inference.sytes.net:8080/invoke',json=test_data,timeout=1000000)
     content = response.json()
