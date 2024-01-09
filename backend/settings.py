@@ -29,7 +29,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 SECRET_KEY = 'django-insecure--d!fqz$+o*dny8lh4g&ooy5&0g^bj8awblgqq716hcau41c_yh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["51.21.78.38","django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com","http://localhost","http://127.0.0.1","http://django-server-env.eba-yye9dqwq.eu-north-1.elasticbeanstalk.com/",'https://react-client-dxho.onrender.co',"sa-inference.sytes.net"]
 
