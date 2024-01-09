@@ -260,7 +260,7 @@ def invoke(request):
       "sender": "user"
     }
     bot_message = {
-      "content": content["output"],
+      "content": content["output"]["result"],
       "sort_order": request.data["sort_order"],
       "chat": request.data["chat_id"],
       "sender": "bot"
